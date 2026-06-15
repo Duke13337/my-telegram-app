@@ -14,10 +14,7 @@
             padding: 0;
             padding-bottom: 80px;
         }
-
-        .header-search {
-            padding: 15px;
-        }
+        .header-search { padding: 15px; }
         .search-input {
             width: 100%;
             background-color: #2c2c2c;
@@ -28,7 +25,6 @@
             box-sizing: border-box;
             font-size: 14px;
         }
-
         .section-title {
             display: flex;
             justify-content: space-between;
@@ -36,18 +32,8 @@
             padding: 0 15px;
             margin-top: 10px;
         }
-        .section-title h2 {
-            font-size: 20px;
-            margin: 0;
-            font-weight: bold;
-        }
-        .toggle-btn {
-            color: #8e8e93;
-            font-size: 14px;
-            cursor: pointer;
-            user-select: none;
-        }
-
+        .section-title h2 { font-size: 20px; margin: 0; font-weight: bold; }
+        .toggle-btn { color: #8e8e93; font-size: 14px; cursor: pointer; user-select: none; }
         .categories-container {
             display: flex;
             overflow-x: auto;
@@ -65,13 +51,8 @@
             overflow: hidden;
             pointer-events: none;
         }
-        .categories-container::-webkit-scrollbar {
-            display: none;
-        }
-        .category-item {
-            flex: 0 0 75px;
-            text-align: center;
-        }
+        .categories-container::-webkit-scrollbar { display: none; }
+        .category-item { flex: 0 0 75px; text-align: center; }
         .category-badge {
             width: 70px;
             height: 50px;
@@ -86,18 +67,8 @@
             border: 1px solid #2c2c2e;
             margin-bottom: 6px;
         }
-        .category-name {
-            font-size: 11px;
-            color: #ffffff;
-            line-height: 1.2;
-        }
-
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            padding: 15px;
-        }
+        .category-name { font-size: 11px; color: #ffffff; line-height: 1.2; }
+        .catalog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
         .product-card {
             background-color: #1c1c1e;
             border-radius: 12px;
@@ -122,41 +93,32 @@
             font-size: 14px;
             color: #000;
             transition: transform 0.1s ease;
+            z-index: 5;
         }
-        .fav-button.active {
-            color: #ff3b30;
-        }
-        .fav-button:active {
-            transform: scale(0.9);
-        }
-        .product-image {
+        .fav-button.active { color: #ff3b30; }
+        .image-container {
             width: 100%;
-            height: 130px;
+            height: 150px;
             background-color: #2c2c2e;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            color: #8e8e93;
         }
-        .product-info {
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
+        .product-img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; }
         .product-title {
             font-size: 13px;
             font-weight: 500;
-            margin: 0 0 15px 0;
-            height: 32px;
+            margin: 0 0 10px 0;
+            height: 34px;
+            line-height: 1.3;
             overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
-        .product-price {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
+        .product-price { font-size: 14px; font-weight: bold; margin-bottom: 12px; }
         .add-button {
             background-color: #ffffff;
             color: #000000;
@@ -168,7 +130,6 @@
             cursor: pointer;
             width: 100%;
         }
-
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -182,22 +143,9 @@
             align-items: center;
             z-index: 100;
         }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8e8e93;
-            font-size: 11px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .nav-item.active {
-            color: #3071ff;
-        }
-        .nav-icon {
-            font-size: 20px;
-            margin-bottom: 4px;
-        }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8e8e93; font-size: 11px; cursor: pointer; }
+        .nav-item.active { color: #3071ff; }
+        .nav-icon { font-size: 20px; margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -212,83 +160,69 @@
     </div>
 
     <div class="categories-container" id="categoriesBlock">
-        <div class="category-item">
-            <div class="category-badge">Бакалея</div>
-            <div class="category-name">Бакалея</div>
-        </div>
-        <div class="category-item">
-            <div class="category-badge">Сыры еда</div>
-            <div class="category-name">Сыры для еды</div>
-        </div>
-        <div class="category-item">
-            <div class="category-badge">Плесень</div>
-            <div class="category-name">Сыры с плесенью</div>
-        </div>
-        <div class="category-item">
-            <div class="category-badge">Козы</div>
-            <div class="category-name">Козьи и овечьи сыры</div>
-        </div>
-        <div class="category-item">
-            <div class="category-badge">Трюфель</div>
-            <div class="category-name">Сыры с трюфелем</div>
-        </div>
+        <div class="category-item"><div class="category-badge">Бакалея</div><div class="category-name">Бакалея</div></div>
+        <div class="category-item"><div class="category-badge">Сыры еда</div><div class="category-name">Сыры для еды</div></div>
+        <div class="category-item"><div class="category-badge">Плесень</div><div class="category-name">Сыры с плесенью</div></div>
+        <div class="category-item"><div class="category-badge">Козы</div><div class="category-name">Козьи и овечьи сыры</div></div>
+        <div class="category-item"><div class="category-badge">Трюфель</div><div class="category-name">Сыры с трюфелем</div></div>
     </div>
 
     <div class="section-title">
         <h2>Каталог</h2>
     </div>
 
-    <div class="catalog-grid">
-        <div class="product-card">
-            <button class="fav-button" onclick="toggleFavorite(this)">🤍</button>
-            <div class="product-image">🧈 Масло</div>
-            <div class="product-info">
-                <p class="product-title">Масло Beurre d'Isigny</p>
-                <div class="product-price">2 500 ₽</div>
-                <button class="add-button" onclick="selectProduct('Масло Beurre d\'Isigny')">Добавить</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <button class="fav-button" onclick="toggleFavorite(this)">🤍</button>
-            <div class="product-image">🍪 Печенье</div>
-            <div class="product-info">
-                <p class="product-title">Печенье Савоярди</p>
-                <div class="product-price">750 ₽</div>
-                <button class="add-button" onclick="selectProduct('Печенье Савоярди')">Добавить</button>
-            </div>
-        </div>
-    </div>
+    <div class="catalog-grid" id="catalogGrid"></div>
 
     <div class="nav-bar">
-        <div class="nav-item active">
-            <span class="nav-icon">🏠</span>
-            <span>Каталог</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">🛒</span>
-            <span>Корзина</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">👤</span>
-            <span>Профиль</span>
-        </div>
+        <div class="nav-item active"><span class="nav-icon">🏠</span><span>Каталог</span></div>
+        <div class="nav-item"><span class="nav-icon">🛒</span><span>Корзина</span></div>
+        <div class="nav-item"><span class="nav-icon">👤</span><span>Профиль</span></div>
     </div>
 
     <script>
         const tg = window.Telegram.WebApp;
         tg.expand();
 
+        const products = [
+            { name: "Масло Beurre d'Isigny", price: "2 500 ₽", img: "https://unsplash.com" },
+            { name: "Печенье Савоярди", price: "750 ₽", img: "https://unsplash.com" },
+            { name: "Кантуччини с клюквой", price: "1 200 ₽", img: "https://unsplash.com" },
+            { name: "Кантуччини с апельсиновыми цукатами", price: "1 200 ₽", img: "https://unsplash.com" },
+            { name: "Кантуччини с анисом и изюмом", price: "1 150 ₽", img: "https://unsplash.com" },
+            { name: "Кантуччини лимон имбирь", price: "1 200 ₽", img: "https://unsplash.com" },
+            { name: "Таралли с чесноком и оливковым маслом", price: "650 ₽", img: "https://unsplash.com" },
+            { name: "Таралли с семенами фенхеля и оливковым маслом", price: "550 ₽", img: "https://unsplash.com" },
+            { name: "Таралли с луком и оливковым маслом", price: "550 ₽", img: "https://unsplash.com" },
+            { name: "Таралли Интеграле", price: "650 ₽", img: "https://unsplash.com" },
+            { name: "Скьяччатине с розмарином", price: "800 ₽", img: "https://unsplash.com" },
+            { name: "Скьяччатине с оливками", price: "800 ₽", img: "https://unsplash.com" }
+        ];
+
+        function renderCatalog() {
+            const grid = document.getElementById('catalogGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <button class="fav-button" onclick="toggleFavorite(this)">🤍</button>
+                    <div class="image-container">
+                        <img src="${p.img}" class="product-img" alt="${p.name}">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-title">${p.name}</p>
+                        <div class="product-price">${p.price}</div>
+                        <button class="add-button" onclick="selectProduct('${p.name.replace(/'/g, "\\'")}')">Добавить</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function selectProduct(name) {
             tg.sendData("Выбран товар: " + name);
             tg.close();
         }
 
-        // Логика сворачивания/разворачивания категорий
         function toggleCategories() {
             const block = document.getElementById('categoriesBlock');
             const btn = document.getElementById('toggleCategories');
-            
             if (block.classList.contains('collapsed')) {
                 block.classList.remove('collapsed');
                 btn.innerHTML = 'Свернуть 🔼';
@@ -298,16 +232,13 @@
             }
         }
 
-        // Логика работы сердечка (избранного)
         function toggleFavorite(button) {
             if (button.classList.contains('active')) {
                 button.classList.remove('active');
                 button.innerHTML = '🤍';
             } else {
                 button.classList.add('active');
-                button.innerHTML = '❤️';
+button.innerHTML = '❤️';
             }
-        }
-    </script>
-</body>
-</html>
+            }
+        renderCatalog();
