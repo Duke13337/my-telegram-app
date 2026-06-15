@@ -41,9 +41,11 @@
             margin: 0;
             font-weight: bold;
         }
-        .section-title span {
+        .toggle-btn {
             color: #8e8e93;
             font-size: 14px;
+            cursor: pointer;
+            user-select: none;
         }
 
         .categories-container {
@@ -51,6 +53,17 @@
             overflow-x: auto;
             padding: 15px;
             gap: 12px;
+            transition: all 0.3s ease-in-out;
+            max-height: 120px;
+            opacity: 1;
+        }
+        .categories-container.collapsed {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
         }
         .categories-container::-webkit-scrollbar {
             display: none;
@@ -107,6 +120,14 @@
             justify-content: center;
             cursor: pointer;
             font-size: 14px;
+            color: #000;
+            transition: transform 0.1s ease;
+        }
+        .fav-button.active {
+            color: #ff3b30;
+        }
+        .fav-button:active {
+            transform: scale(0.9);
         }
         .product-image {
             width: 100%;
@@ -187,10 +208,10 @@
 
     <div class="section-title">
         <h2>Категории</h2>
-        <span>Свернуть 🔼</span>
+        <span class="toggle-btn" id="toggleCategories" onclick="toggleCategories()">Свернуть 🔼</span>
     </div>
 
-    <div class="categories-container">
+    <div class="categories-container" id="categoriesBlock">
         <div class="category-item">
             <div class="category-badge">Бакалея</div>
             <div class="category-name">Бакалея</div>
@@ -219,7 +240,7 @@
 
     <div class="catalog-grid">
         <div class="product-card">
-            <button class="fav-button">🤍</button>
+            <button class="fav-button" onclick="toggleFavorite(this)">🤍</button>
             <div class="product-image">🧈 Масло</div>
             <div class="product-info">
                 <p class="product-title">Масло Beurre d'Isigny</p>
@@ -229,7 +250,7 @@
         </div>
 
         <div class="product-card">
-            <button class="fav-button">🤍</button>
+            <button class="fav-button" onclick="toggleFavorite(this)">🤍</button>
             <div class="product-image">🍪 Печенье</div>
             <div class="product-info">
                 <p class="product-title">Печенье Савоярди</p>
@@ -261,6 +282,31 @@
         function selectProduct(name) {
             tg.sendData("Выбран товар: " + name);
             tg.close();
+        }
+
+        // Логика сворачивания/разворачивания категорий
+        function toggleCategories() {
+            const block = document.getElementById('categoriesBlock');
+            const btn = document.getElementById('toggleCategories');
+            
+            if (block.classList.contains('collapsed')) {
+                block.classList.remove('collapsed');
+                btn.innerHTML = 'Свернуть 🔼';
+            } else {
+                block.classList.add('collapsed');
+                btn.innerHTML = 'Развернуть 🔽';
+            }
+        }
+
+        // Логика работы сердечка (избранного)
+        function toggleFavorite(button) {
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                button.innerHTML = '🤍';
+            } else {
+                button.classList.add('active');
+                button.innerHTML = '❤️';
+            }
         }
     </script>
 </body>
