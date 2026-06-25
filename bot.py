@@ -4,7 +4,7 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, InlineKe
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-TOKEN = "8653856711:AAFtBnm45kIEWjACBWBwcJMUeraAM7i2RYs"
+TOKEN = "8625850463:AAEUkd7b1JHJ0kQduG9awNh4cB2Y6UJwEbw"
 WEB_APP_URL = "https://duke13337.github.io/my-telegram-app/"
 
 bot = Bot(token=TOKEN)
